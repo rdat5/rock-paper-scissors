@@ -94,12 +94,24 @@ function game()
     const gameRounds = 5;
     let playerScore = 0;
     let computerScore = 0;
+    let scoreMessage;
 
     for (let i = 1; i < gameRounds + 1; i++)
     {
         let playerChoice = prompt("Enter 'Rock', 'Paper', or 'Scissors'");
         let computerChoice = computerPlay();
         console.log(playRound(playerChoice, computerChoice));
+        if (playRound(playerChoice, computerChoice).includes("Win"))
+        {
+            playerScore += 1;
+        }
+        else if (playRound(playerChoice, computerChoice).includes("Lose"))
+        {
+            computerScore += 1;
+        }
+
+        scoreMessage = "Player: " + playerScore + "\n" + "Computer: " + computerScore + "\n";
+        console.log(scoreMessage);
     }
 }
 
