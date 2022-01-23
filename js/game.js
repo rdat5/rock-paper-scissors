@@ -95,6 +95,7 @@ function game()
     let playerScore = 0;
     let computerScore = 0;
     let scoreMessage;
+    let finalResults;
 
     for (let i = 1; i < gameRounds + 1; i++)
     {
@@ -113,6 +114,21 @@ function game()
         scoreMessage = "Player: " + playerScore + "\n" + "Computer: " + computerScore + "\n";
         console.log(scoreMessage);
     }
+
+    if (playerScore > computerScore)
+    {
+        finalResults = "You win with a score of " + playerScore + " to " + computerScore;
+    }
+    else if (playerScore < computerScore)
+    {
+        finalResults = "Computer wins with a score of " + computerScore + " to " + playerScore;
+    }
+    else
+    {
+        finalResults = "You both tied with a score of " + playerScore;
+    }
+
+    console.log(finalResults);
 }
 
 game();
