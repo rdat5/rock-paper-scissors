@@ -88,3 +88,19 @@ function playRound(playerSelection, computerSelection)
 
     return message;
 }
+
+function game()
+{
+    const gameRounds = 5;
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 1; i < gameRounds + 1; i++)
+    {
+        let playerChoice = prompt("Enter 'Rock', 'Paper', or 'Scissors'");
+        let computerChoice = computerPlay();
+        console.log(playRound(playerChoice, computerChoice));
+    }
+}
+
+game();
