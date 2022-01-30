@@ -89,46 +89,60 @@ function playRound(playerSelection, computerSelection)
     return message;
 }
 
-function game()
-{
-    const gameRounds = 5;
-    let playerScore = 0;
-    let computerScore = 0;
-    let scoreMessage;
-    let finalResults;
+const rockBtn = document.querySelector('#RockBtn');
+const paperBtn = document.querySelector('#PaperBtn');
+const scissorsBtn = document.querySelector('#ScissorsBtn');
 
-    for (let i = 1; i < gameRounds + 1; i++)
-    {
-        let playerChoice = prompt("Enter 'Rock', 'Paper', or 'Scissors'");
-        let computerChoice = computerPlay();
-        console.log(playRound(playerChoice, computerChoice));
-        if (playRound(playerChoice, computerChoice).includes("Win"))
-        {
-            playerScore += 1;
-        }
-        else if (playRound(playerChoice, computerChoice).includes("Lose"))
-        {
-            computerScore += 1;
-        }
+rockBtn.addEventListener('click', () => {
+    console.log(playRound('rock', computerPlay()));
+});
+paperBtn.addEventListener('click', () => {
+    console.log(playRound('paper', computerPlay()));
+});
+scissorsBtn.addEventListener('click', () => {
+    console.log(playRound('scissors', computerPlay()));
+});
 
-        scoreMessage = "Player: " + playerScore + "\n" + "Computer: " + computerScore + "\n";
-        console.log(scoreMessage);
-    }
+// function game()
+// {
+//     const gameRounds = 5;
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     let scoreMessage;
+//     let finalResults;
 
-    if (playerScore > computerScore)
-    {
-        finalResults = "You win with a score of " + playerScore + " to " + computerScore;
-    }
-    else if (playerScore < computerScore)
-    {
-        finalResults = "Computer wins with a score of " + computerScore + " to " + playerScore;
-    }
-    else
-    {
-        finalResults = "You both tied with a score of " + playerScore;
-    }
+//     for (let i = 1; i < gameRounds + 1; i++)
+//     {
+//         let playerChoice = prompt("Enter 'Rock', 'Paper', or 'Scissors'");
+//         let computerChoice = computerPlay();
+//         console.log(playRound(playerChoice, computerChoice));
+//         if (playRound(playerChoice, computerChoice).includes("Win"))
+//         {
+//             playerScore += 1;
+//         }
+//         else if (playRound(playerChoice, computerChoice).includes("Lose"))
+//         {
+//             computerScore += 1;
+//         }
 
-    console.log(finalResults);
-}
+//         scoreMessage = "Player: " + playerScore + "\n" + "Computer: " + computerScore + "\n";
+//         console.log(scoreMessage);
+//     }
 
-game();
+//     if (playerScore > computerScore)
+//     {
+//         finalResults = "You win with a score of " + playerScore + " to " + computerScore;
+//     }
+//     else if (playerScore < computerScore)
+//     {
+//         finalResults = "Computer wins with a score of " + computerScore + " to " + playerScore;
+//     }
+//     else
+//     {
+//         finalResults = "You both tied with a score of " + playerScore;
+//     }
+
+//     console.log(finalResults);
+// }
+
+// game();
