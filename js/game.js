@@ -94,14 +94,83 @@ const paperBtn = document.querySelector('#PaperBtn');
 const scissorsBtn = document.querySelector('#ScissorsBtn');
 
 rockBtn.addEventListener('click', () => {
-    console.log(playRound('rock', computerPlay()));
+    enterChoice('rock');
 });
 paperBtn.addEventListener('click', () => {
-    console.log(playRound('paper', computerPlay()));
+    enterChoice('paper');
 });
 scissorsBtn.addEventListener('click', () => {
-    console.log(playRound('scissors', computerPlay()));
+    enterChoice('scissors');
 });
+
+const resultContainer = document.querySelector('.result-container');
+const maxGameRounds = 5;
+let gameRound = 1;
+let playerScore = 0;
+let computerScore = 0;
+let finalResults = "";
+
+function enterChoice(choice)
+{
+    if (gameRound <= maxGameRounds)
+    {
+        let gameOverResults = "";
+
+        const roundResult = document.createElement('p');
+        let currentRoundResults = playRound(choice, computerPlay())
+        if (currentRoundResults.includes("Win"))
+        {
+            playerScore += 1;
+        }
+        else if (currentRoundResults.includes("Lose"))
+        {
+            computerScore += 1;
+        }
+
+        if (gameRound === maxGameRounds)
+        {
+            if (playerScore > computerScore)
+            {
+                gameOverResults = "You win the game!";
+            }
+            else if (playerScore < computerScore)
+            {
+                gameOverResults = "You lose the game!";
+            }
+            else
+            {
+                gameOverResults = "You both tie!";
+            }
+        }
+
+        roundResult.textContent = "Round " + gameRound + "\r\n" + 
+                currentRoundResults + "\r\n" +
+                "Player: " + playerScore + " | " +
+                "Computer: " + computerScore + "\r\n" + 
+                gameOverResults;
+        roundResult.style.whiteSpace = 'pre-line';
+        resultContainer.appendChild(roundResult);
+        gameRound += 1;
+    }
+
+}
+
+
+// function game()
+// {
+//     const gameRounds = 5;
+//     let currentRound = 1;
+
+//     while(currentRound <= gameRounds)
+//     {
+//         const roundResult = document.createElement('p');
+//         roundResult.textContent = "currentRound: " + currentRound;
+        
+//         resultContainer.appendChild(roundResult);
+
+//         currentRound += 1;
+//     }
+// }
 
 // function game()
 // {
@@ -144,5 +213,3 @@ scissorsBtn.addEventListener('click', () => {
 
 //     console.log(finalResults);
 // }
-
-// game();
