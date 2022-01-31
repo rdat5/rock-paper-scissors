@@ -104,15 +104,15 @@ scissorsBtn.addEventListener('click', () => {
 });
 
 const resultContainer = document.querySelector('.result-container');
-const maxGameRounds = 5;
 let gameRound = 1;
 let playerScore = 0;
 let computerScore = 0;
 let finalResults = "";
+let gameIsOver = false;
 
 function enterChoice(choice)
 {
-    if (gameRound <= maxGameRounds)
+    if (!gameIsOver)
     {
         let gameOverResults = "";
 
@@ -127,7 +127,7 @@ function enterChoice(choice)
             computerScore += 1;
         }
 
-        if (gameRound === maxGameRounds)
+        if (playerScore >= 5 || computerScore >= 5)
         {
             if (playerScore > computerScore)
             {
@@ -135,12 +135,10 @@ function enterChoice(choice)
             }
             else if (playerScore < computerScore)
             {
-                gameOverResults = "You lose the game!";
+                gameOverResults = "The computer wins the game!";
             }
-            else
-            {
-                gameOverResults = "You both tie!";
-            }
+
+            gameIsOver = true;
         }
 
         roundResult.textContent = "Round " + gameRound + "\r\n" + 
